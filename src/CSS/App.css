@@ -1,0 +1,74 @@
+body {
+  background-color: #282c34;
+}
+
+.App {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.card-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  grid-gap: 4rem;
+  padding: 4rem;
+  margin: 0 auto;
+  width: max-content;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5em;
+  color: white;
+  padding: 1em;
+  box-shadow: 0 0 1.55em -1em black;
+  border: 4px solid #ccc;
+  height: 20rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  max-width: 400px;
+}
+
+.card h1 {
+  margin: 0;
+  font-size: 1.5em;
+  line-height: 1.2em;
+}
+
+.card p {
+  font-size: 0.75em;
+  font-family: 'Open Sans';
+  margin-top: 0.5em;
+  margin-bottom: 0;
+}
+
+.btn {
+  background-color: #1b5155; /* Green */
+  border: none;
+  color: white;
+  padding: 5px;
+  margin-top: 50px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 100%;
+  cursor: pointer;
+}
+
+.sum-wrapper {
+  display: flex;
+  width: 400px;
+
+  justify-content: space-between;
+}
+
+input {
+  padding: 5px;
+}
