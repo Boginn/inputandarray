@@ -17,34 +17,27 @@ function App() {
   };
 
   // methods:handlers
-  /*
-    (just a note for my future self)
-    Using onChange to update the value gave me some problems here,
-    if I want to have a default value in there(value="sth") then
-    the user would first have to make a change for that value to be
-    updated in the state and added. Grabbing the value from the input 
-    when it's submitted seems more logical.
+  // const handleChangeName = (event) => {
+  //   setState({
+  //     ...state,
+  //     name: event.target.value,
+  //   });
+  // };
 
-    I kept using onChange even if it doesn´t make sense, looking at the event 
-    object that gets passed is interesting! 
+  // const handleChangeAmount = (event) => {
+  //   console.log(event);
+  //   setState({
+  //     ...state,
+  //     amount: parseInt(event.target.value),
+  //   });
+  // };
 
-    Didn't manage to reset the input fields after submitting. Using
-    <form> might help.
-
-    v-model in Vue handled this well
-    */
-  const handleChangeName = (event) => {
+  const setFormData = (obj) => {
+    const { string, number } = obj;
     setState({
       ...state,
-      name: event.target.value,
-    });
-  };
-
-  const handleChangeAmount = (event) => {
-    console.log(event);
-    setState({
-      ...state,
-      amount: parseInt(event.target.value),
+      amount: parseInt(number),
+      name: string,
     });
   };
 
@@ -61,14 +54,28 @@ function App() {
 
     if (name.length && amount) {
       newArray = array.concat({ name, id: getId() });
-      setState({
-        ...state,
-        id: updateId(),
-        name,
-        amount,
-        array: newArray,
-        sum: amount + sum,
-      });
+      setState(
+        {
+          ...state,
+          id: updateId(),
+          name,
+          amount,
+          array: newArray,
+          sum: amount + sum,
+        },
+        /*
+        Warning: State updates from the useState() and useReducer() Hooks don't support
+        the second callback argument.
+        To execute a side effect after rendering,
+        declare it in the component body with useEffect().
+        */
+        () => {
+          setFormData({
+            string: null,
+            number: null,
+          });
+        }
+      );
     }
   };
 
@@ -76,9 +83,10 @@ function App() {
     <div className="App">
       <Cards>
         <User
-          onHandleChangeName={handleChangeName}
-          onHandleChangeAmount={handleChangeAmount}
-          onHandleSubmit={handleSubmit}
+          // onHandleChangeName={handleChangeName}
+          // onHandleChangeAmount={handleChangeAmount}
+          handleSubmit={handleSubmit}
+          setFormData={setFormData}
         />
         <Display sum={sum} array={array} onRemove={handleRemove} />
       </Cards>
