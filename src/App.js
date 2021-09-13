@@ -1,7 +1,7 @@
 import './CSS/App.css';
 import { useState } from 'react';
 import initialState from './data';
-import { Footer, Display, Cards } from './components';
+import { Footer, Display, Cards, User } from './components';
 
 function App() {
   const [state, setState] = useState(initialState);
@@ -18,16 +18,20 @@ function App() {
 
   // methods:handlers
   /*
+    (just a note for my future self)
     Using onChange to update the value gave me some problems here,
     if I want to have a default value in there(value="sth") then
     the user would first have to make a change for that value to be
     updated in the state and added. Grabbing the value from the input 
     when it's submitted seems more logical.
 
-    How would I go about resetting the input fields using this
-    approach?
+    I kept using onChange even if it doesn´t make sense, looking at the event 
+    object that gets passed is interesting! 
 
-    Is a two way value binding possible? (thinking of Vue's v-model)
+    Didn't manage to reset the input fields after submitting. Using
+    <form> might help.
+
+    v-model in Vue handled this well
     */
   const handleChangeName = (event) => {
     setState({
@@ -37,9 +41,18 @@ function App() {
   };
 
   const handleChangeAmount = (event) => {
+    console.log(event);
     setState({
       ...state,
       amount: parseInt(event.target.value),
+    });
+  };
+
+  const handleRemove = (itemId) => {
+    const newArray = array.filter((i) => i.id !== itemId);
+    setState({
+      ...state,
+      array: newArray,
     });
   };
 
@@ -62,18 +75,12 @@ function App() {
   return (
     <div className="App">
       <Cards>
-        <div className="card">
-          <p>name</p>
-          <input type="text" onChange={handleChangeName} />
-          <p>number</p>
-          <input type="number" onChange={handleChangeAmount} />
-          <div>
-            <button type="button" className="btn" onClick={handleSubmit}>
-              add
-            </button>
-          </div>
-        </div>
-        <Display sum={sum} array={array} />
+        <User
+          onHandleChangeName={handleChangeName}
+          onHandleChangeAmount={handleChangeAmount}
+          onHandleSubmit={handleSubmit}
+        />
+        <Display sum={sum} array={array} onRemove={handleRemove} />
       </Cards>
       <Footer text={author} />
     </div>

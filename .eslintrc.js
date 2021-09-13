@@ -21,6 +21,8 @@ module.exports = {
     'react/self-closing-comp': 0,
     'react/jsx-indent': 0,
     'react/jsx-closing-tag-location': 0,
+    'jsx-a11y/click-events-have-key-events': 0,
+    'jsx-a11y/no-static-element-interactions': 0,
     'arrow-body-style': 0,
     'object-curly-newline': 0,
     'comma-dangle': 0,

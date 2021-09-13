@@ -1,3 +1,6 @@
+/* Can't wait to get some tools to work with CSS within React,
+precious time is spent doing things you know how to do but... css */
+
 body {
   background-color: #282c34;
 }
@@ -62,7 +65,7 @@ body {
   cursor: pointer;
 }
 
-.sum-wrapper {
+.class-soup {
   display: flex;
   width: 400px;
 
@@ -71,4 +74,37 @@ body {
 
 input {
   padding: 5px;
+}
+
+.item-wrapper {
+  display: flex;
+  width: 100%;
+  vertical-align: center;
+  background-color: #1b51554d;
+  margin-top: 4px;
+  margin-bottom: 4px;
+  padding: 4px;
+  padding-left: 8px;
+  justify-content: space-between;
+}
+
+.item {
+}
+
+.remove-button {
+  background-color: #1c828a4d;
+  color: white;
+  height: 50%;
+  border: 0;
+}
+.remove-button:hover {
+  background-color: #1b51559d;
+  color: grey;
+  height: 50%;
+  border: 0;
+  cursor: pointer;
+}
+
+.ml8 {
+  margin-left: 8px;
 }

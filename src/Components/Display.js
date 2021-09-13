@@ -1,14 +1,24 @@
 function Display(props) {
-  const { sum, array } = props;
+  const { sum, array, onRemove } = props;
+
   return (
     <div className="card">
-      <div className="sum-wrapper">
-        <p>sum</p>
-        <p>{sum}</p>
+      <div className="class-soup">
+        <span className="ml8 ">sum</span>
+        <span>{sum}</span>
       </div>
       <div>
         {array.map((item) => (
-          <li key={item.id}>{item.name}</li>
+          <li key={item.id} className="item item-wrapper">
+            {item.name}
+            <button
+              className="remove-button"
+              type="button"
+              onClick={() => onRemove(item.id)}
+            >
+              x
+            </button>
+          </li>
         ))}
       </div>
     </div>
