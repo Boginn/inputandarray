@@ -6,7 +6,6 @@ import { Footer, Display, Cards, User } from './components';
 function App() {
   const [state, setState] = useState(initialState);
   const { id, name, amount, array, sum, author } = state;
-  let foo = false;
 
   // methods:id
   const getId = () => {
@@ -58,8 +57,6 @@ function App() {
       });
       console.log(state);
     }
-    foo = true;
-    console.log(foo);
   };
 
   useEffect(() => {
