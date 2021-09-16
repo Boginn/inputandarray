@@ -84,10 +84,6 @@ input {
   padding-left: 8px;
   justify-content: space-between;
 }
-
-.item {
-}
-
 .remove-button {
   background-color: #1c828a4d;
   color: white;

@@ -11,24 +11,29 @@ function User(props) {
   };
 
   const handleAdd = () => {
+    handleSubmit();
+    resetForm();
+  };
+
+  const handleChange = () => {
     setFormData({
       string: inputName.current.value,
       number: inputNumber.current.value,
     });
-    handleSubmit();
-    resetForm();
   };
 
   return (
     <div className="card">
       <p>string</p>
       <input
+        onChange={handleChange}
         type="text"
         ref={inputName}
         // onChange={(event) => onHandleChangeName(event)}
       />
       <p>number</p>
       <input
+        onChange={handleChange}
         type="number"
         ref={inputNumber}
         // onChange={(event) => onHandleChangeAmount(event)}

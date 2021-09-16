@@ -16,22 +16,6 @@ function App() {
     return id + 1;
   };
 
-  // methods:handlers
-  // const handleChangeName = (event) => {
-  //   setState({
-  //     ...state,
-  //     name: event.target.value,
-  //   });
-  // };
-
-  // const handleChangeAmount = (event) => {
-  //   console.log(event);
-  //   setState({
-  //     ...state,
-  //     amount: parseInt(event.target.value),
-  //   });
-  // };
-
   const setFormData = (obj) => {
     const { string, number } = obj;
     setState({
@@ -76,18 +60,14 @@ function App() {
           });
         }
       );
+      console.log(state);
     }
   };
 
   return (
     <div className="App">
       <Cards>
-        <User
-          // onHandleChangeName={handleChangeName}
-          // onHandleChangeAmount={handleChangeAmount}
-          handleSubmit={handleSubmit}
-          setFormData={setFormData}
-        />
+        <User handleSubmit={handleSubmit} setFormData={setFormData} />
         <Display sum={sum} array={array} onRemove={handleRemove} />
       </Cards>
       <Footer text={author} />
