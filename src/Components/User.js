@@ -25,19 +25,9 @@ function User(props) {
   return (
     <div className="card">
       <p>string</p>
-      <input
-        onChange={handleChange}
-        type="text"
-        ref={inputName}
-        // onChange={(event) => onHandleChangeName(event)}
-      />
+      <input onChange={handleChange} type="text" ref={inputName} />
       <p>number</p>
-      <input
-        onChange={handleChange}
-        type="number"
-        ref={inputNumber}
-        // onChange={(event) => onHandleChangeAmount(event)}
-      />
+      <input onChange={handleChange} type="number" ref={inputNumber} />
       <div>
         <button type="button" className="btn" onClick={() => handleAdd()}>
           add

@@ -1,11 +1,12 @@
 import './CSS/App.css';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import initialState from './data';
 import { Footer, Display, Cards, User } from './components';
 
 function App() {
   const [state, setState] = useState(initialState);
   const { id, name, amount, array, sum, author } = state;
+  let foo = false;
 
   // methods:id
   const getId = () => {
@@ -25,6 +26,14 @@ function App() {
     });
   };
 
+  const resetFormData = () => {
+    setState({
+      ...state,
+      amount: 0,
+      name: '',
+    });
+  };
+
   const handleRemove = (itemId) => {
     const newArray = array.filter((i) => i.id !== itemId);
     setState({
@@ -38,31 +47,24 @@ function App() {
 
     if (name.length && amount) {
       newArray = array.concat({ name, id: getId() });
-      setState(
-        {
-          ...state,
-          id: updateId(),
-          name,
-          amount,
-          array: newArray,
-          sum: amount + sum,
-        },
-        /*
-        Warning: State updates from the useState() and useReducer() Hooks don't support
-        the second callback argument.
-        To execute a side effect after rendering,
-        declare it in the component body with useEffect().
-        */
-        () => {
-          setFormData({
-            string: null,
-            number: null,
-          });
-        }
-      );
+
+      setState({
+        ...state,
+        id: updateId(),
+        name,
+        amount,
+        array: newArray,
+        sum: amount + sum,
+      });
       console.log(state);
     }
+    foo = true;
+    console.log(foo);
   };
+
+  useEffect(() => {
+    resetFormData();
+  }, [sum]);
 
   return (
     <div className="App">
